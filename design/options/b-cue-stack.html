@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Umbriel Shaders — B</title>
+<style>
+  :root{
+    --ink:#F2EDE4; --ground:#0E0E12; --panel:#16161C; --line:#2A2A33; --dim:#8B8B96;
+    --amber:#FFB000; --cyan:#3FD8E8; --magenta:#FF4D6D; --green:#7BE495;
+    --narrow:"Nimbus Sans Narrow","Liberation Sans Narrow",sans-serif;
+    --mono:"JetBrains Mono","Iosevka",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--ground);color:var(--ink);font-family:var(--narrow);font-size:14px;
+    -webkit-font-smoothing:antialiased;overflow:hidden}
+  .app{height:100vh;display:flex;flex-direction:column}
+
+  .titlebar{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;
+    border-bottom:1px solid var(--line);background:#0B0B0F;flex:0 0 auto}
+  .lights{display:flex;gap:6px}.lights i{width:9px;height:9px;border-radius:50%;background:#2C2C35;display:block}
+  .wintitle{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
+  .wincontrols{display:flex;gap:14px;color:#4E4E58;font-family:var(--mono);font-size:11px}
+
+  .shell{flex:1;display:grid;grid-template-columns:250px 1fr 340px;min-height:0}
+
+  .rail{border-right:1px solid var(--line);background:#0B0B0F;display:flex;flex-direction:column;min-height:0}
+  .mark{padding:24px 22px 20px;border-bottom:1px solid var(--line)}
+  .mark b{display:block;font-size:25px;text-transform:uppercase;line-height:.92;letter-spacing:.01em}
+  .mark b em{font-style:normal;color:var(--amber)}
+  .mark small{display:block;margin-top:9px;font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;
+    color:var(--dim);text-transform:uppercase}
+  .railtitle{padding:18px 22px 10px;font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;
+    color:var(--dim);text-transform:uppercase}
+  .cues{display:flex;flex-direction:column;overflow:hidden}
+  .cue{display:grid;grid-template-columns:28px 1fr 10px;align-items:center;gap:10px;
+    padding:12px 22px;border-top:1px solid var(--line);position:relative}
+  .cue .n{font-family:var(--mono);font-size:9.5px;color:var(--dim)}
+  .cue .t{font-size:16px;letter-spacing:.02em;line-height:1.05}
+  .cue .t small{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--dim);
+    text-transform:uppercase;margin-top:3px}
+  .cue .bar{width:5px;height:30px;background:#26262E;align-self:end;justify-self:end}
+  .cue.on{background:#1B1B22}
+  .cue.on::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--amber)}
+  .cue.on .n{color:var(--amber)}
+  .cue.on .bar{background:var(--amber)}
+  .cue:nth-child(2) .bar{height:22px}
+  .cue:nth-child(3) .bar{height:26px}
+  .cue:nth-child(4) .bar{height:20px}
+  .cue:nth-child(5) .bar{height:28px}
+  .railfoot{margin-top:auto;border-top:1px solid var(--line);padding:14px 22px;display:flex;flex-direction:column;gap:12px}
+  .railfoot a{color:var(--dim);text-decoration:none;font-size:13px;letter-spacing:.04em;text-transform:uppercase;
+    display:flex;justify-content:space-between}
+  .railfoot a.warn{color:var(--magenta)}
+  .railfoot a.settings{color:var(--ink)}
+
+  .main{display:flex;flex-direction:column;min-height:0;min-width:0}
+  .mainhead{padding:24px 30px 18px;border-bottom:1px solid var(--line);display:flex;align-items:flex-end;
+    justify-content:space-between;gap:20px}
+  .mainhead h1{font-size:46px;line-height:.85;text-transform:uppercase;letter-spacing:.005em}
+  .mainhead h1 small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--dim);
+    text-transform:uppercase;margin-bottom:8px;font-weight:400}
+  .chips{display:flex;gap:8px;align-items:center;padding-bottom:4px}
+  .chip{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+    padding:6px 10px;border:1px solid var(--line);color:var(--dim)}
+  .chip.live{color:var(--green);border-color:#2E4A38}
+  .chip.live i{display:inline-block;width:5px;height:5px;background:var(--green);border-radius:50%;margin-right:6px}
+
+  .stage{flex:1;display:grid;place-items:center;position:relative;overflow:hidden;
+    background:radial-gradient(100% 80% at 50% 45%,#1A1A22 0%,#101014 55%,#0B0B0F 100%)}
+  .win{width:660px;height:372px;background:#141419;border:1px solid #34343F;position:relative;
+    box-shadow:0 0 0 2px rgba(255,176,0,.9),0 0 60px rgba(255,176,0,.20),0 0 130px rgba(255,176,0,.10)}
+  .win .bar{height:34px;border-bottom:1px solid #2A2A33;display:flex;align-items:center;gap:6px;padding:0 12px}
+  .win .bar i{width:6px;height:6px;border-radius:50%;background:#3A3A45;display:block}
+  .win .bar span{margin-left:auto;font-family:var(--mono);font-size:8px;letter-spacing:.16em;color:#5E5E6A;text-transform:uppercase}
+  .win .body{padding:26px 30px;display:grid;grid-template-columns:1.4fr 1fr;gap:26px}
+  .win .body s{display:block;height:9px;background:#23232B;margin-bottom:12px;text-decoration:none}
+  .win .body s:first-child{width:58%;height:13px;background:#30303A}
+  .win .body s:nth-child(4){width:80%}
+  .win .body .col2 s{width:100%}
+  .stage .tag{position:absolute;left:30px;top:20px;font-family:var(--mono);font-size:8.5px;
+    letter-spacing:.2em;color:#5A5A66;text-transform:uppercase}
+  .stage .tag b{color:var(--amber);font-weight:400}
+
+  .transport{border-top:1px solid var(--line);padding:16px 30px 20px;display:flex;align-items:center;gap:22px}
+  .go{width:78px;height:78px;border-radius:50%;background:var(--amber);color:#1A1200;display:grid;place-items:center;
+    font-size:20px;font-weight:700;letter-spacing:.08em;flex:0 0 auto;box-shadow:0 0 0 8px rgba(255,176,0,.07)}
+  .tl{flex:1}
+  .tl .labels{display:flex;justify-content:space-between;font-family:var(--mono);font-size:8.5px;
+    letter-spacing:.16em;color:var(--dim);text-transform:uppercase;margin-bottom:8px}
+  .tl .line{height:46px;border:1px solid var(--line);position:relative;background:#121218}
+  .tl .line .fill{position:absolute;left:0;top:0;bottom:0;width:38%;background:rgba(255,176,0,.14);border-right:1px solid var(--amber)}
+  .tl .line .head{position:absolute;left:38%;top:-5px;bottom:-5px;width:2px;background:var(--amber)}
+  .tl .line .curve{position:absolute;inset:0;opacity:.5}
+  .tl .line svg{width:100%;height:100%}
+
+  .inspector{border-left:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;min-height:0}
+  .inshead{padding:22px 22px 18px;border-bottom:1px solid var(--line)}
+  .inshead h2{font-size:26px;line-height:1;letter-spacing:.01em}
+  .inshead p{margin-top:7px;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase}
+  .form{padding:18px 22px;display:flex;flex-direction:column;gap:18px;flex:1}
+  .field label{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;color:var(--dim);
+    text-transform:uppercase;margin-bottom:8px}
+  .field .box{border:1px solid var(--line);padding:11px 12px;display:flex;justify-content:space-between;align-items:center;font-size:15px}
+  .field .box span{font-family:var(--mono);font-size:11px;color:var(--dim)}
+  .slider{position:relative;height:34px}
+  .slider .rail{position:absolute;left:0;right:0;top:16px;height:2px;background:#2E2E38}
+  .slider .fill{position:absolute;left:0;width:58%;top:16px;height:2px;background:var(--amber)}
+  .slider .knob{position:absolute;left:58%;top:10px;width:13px;height:13px;border-radius:50%;background:var(--amber);
+    transform:translateX(-50%);box-shadow:0 0 0 4px rgba(255,176,0,.14)}
+  .scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;color:#5E5E6A;margin-top:2px}
+  .scale b{font-weight:400;color:var(--amber)}
+  .insfoot{padding:18px 22px 22px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px}
+  .btn{border:1px solid var(--line);background:transparent;color:var(--ink);font-family:var(--narrow);
+    font-size:14px;text-transform:uppercase;letter-spacing:.07em;padding:13px 16px;cursor:default;text-align:center}
+  .btn.primary{background:var(--amber);border-color:var(--amber);color:#1A1200;font-weight:700}
+  .btn.ghost{color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="titlebar">
+    <div class="lights"><i></i><i></i><i></i></div>
+    <div class="wintitle">umbriel-shaders</div>
+    <div class="wincontrols"><span>—</span><span>□</span><span>×</span></div>
+  </div>
+
+  <div class="shell">
+    <aside class="rail">
+      <div class="mark">
+        <b>Umbriel<br><em>Shaders</em></b>
+        <small>Cue stack · 5 slots</small>
+      </div>
+      <div class="railtitle">Slots</div>
+      <div class="cues">
+        <div class="cue on"><span class="n">01</span><span class="t">Overview<small>aurora-veil</small></span><span class="bar"></span></div>
+        <div class="cue"><span class="n">02</span><span class="t">Scratchpad<small>paper-fade</small></span><span class="bar"></span></div>
+        <div class="cue"><span class="n">03</span><span class="t">Border<small>focus-ring-pulse</small></span><span class="bar"></span></div>
+        <div class="cue"><span class="n">04</span><span class="t">Unfocused<small>desaturate-soft</small></span><span class="bar"></span></div>
+        <div class="cue"><span class="n">05</span><span class="t">Layer<small>panel-glide</small></span><span class="bar"></span></div>
+      </div>
+      <div class="railfoot">
+        <a class="settings" href="#">Ajustes <span>⌘,</span></a>
+        <a href="#">Biblioteca <span>24</span></a>
+        <a class="warn" href="#">Restaurar original</a>
+      </div>
+    </aside>
+
+    <section class="main">
+      <div class="mainhead">
+        <h1><small>Cue 01 · Slot</small>Overview</h1>
+        <div class="chips">
+          <span class="chip live"><i></i>En vivo</span>
+          <span class="chip">320 ms</span>
+          <span class="chip">ease-out cubic</span>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="tag">Previsualización · <b>aurora-veil</b></div>
+        <div class="win">
+          <div class="bar"><i></i><i></i><i></i><span>overview — 320 ms</span></div>
+          <div class="body">
+            <div><s></s><s></s><s></s><s></s><s></s></div>
+            <div class="col2"><s></s><s></s><s></s></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="transport">
+        <div class="go">GO</div>
+        <div class="tl">
+          <div class="labels"><span>Fade · 320 ms</span><span>Reproducir de nuevo</span></div>
+          <div class="line">
+            <div class="fill"></div>
+            <div class="head"></div>
+            <div class="curve">
+              <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+                <path d="M0,38 C22,38 34,4 100,3" fill="none" stroke="#FFB000" stroke-width="1.4"/>
+                <path d="M0,38 C22,38 34,4 100,3 L100,40 L0,40 Z" fill="#FFB000" opacity=".08"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="inspector">
+      <div class="inshead">
+        <h2>aurora-veil</h2>
+        <p>Comunidad · v2.0.1 · 9c41…7ab2</p>
+      </div>
+      <div class="form">
+        <div class="field">
+          <label>Slot de destino</label>
+          <div class="box">Overview <span>01</span></div>
+        </div>
+        <div class="field">
+          <label>Duración</label>
+          <div class="slider">
+            <div class="rail"></div><div class="fill"></div><div class="knob"></div>
+          </div>
+          <div class="scale"><span>80</span><b>320 ms</b><span>800</span></div>
+        </div>
+        <div class="field">
+          <label>Curva</label>
+          <div class="box">ease-out cubic <span>▾</span></div>
+        </div>
+        <div class="field">
+          <label>Biblioteca</label>
+          <div class="box">Guardado en disco <span>✓</span></div>
+        </div>
+      </div>
+      <div class="insfoot">
+        <button class="btn primary">Aplicar a Overview</button>
+        <button class="btn ghost">Deshacer último cambio</button>
+      </div>
+    </aside>
+  </div>
+</div>
+</body>
+</html>

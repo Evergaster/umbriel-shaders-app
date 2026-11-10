@@ -1,0 +1,30 @@
+[package]
+name = "umbriel-shaders"
+version = "0.1.0"
+description = "Browse and apply Umbriel shaders"
+authors = ["Barrulus"]
+license = "MIT"
+edition = "2021"
+rust-version = "1.77"
+
+[lib]
+name = "umbriel_shaders_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+dirs = "5"
+toml_edit = "0.25"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

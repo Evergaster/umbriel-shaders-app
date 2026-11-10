@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umbriel Shaders</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app">
+  <div class="titlebar" data-tauri-drag-region>
+    <div class="lights" data-tauri-drag-region><i></i><i></i><i></i></div>
+    <div class="wintitle" data-tauri-drag-region>umbriel-shaders</div>
+    <div class="wincontrols">
+      <button class="winbtn" id="win-min" aria-label="Minimizar"><svg viewBox="0 0 10 10"><path d="M2 5h6"/></svg></button>
+      <button class="winbtn" id="win-max" aria-label="Maximizar"><svg viewBox="0 0 10 10"><rect x="2.5" y="2.5" width="5" height="5"/></svg></button>
+      <button class="winbtn danger" id="win-close" aria-label="Cerrar"><svg viewBox="0 0 10 10"><path d="M2.5 2.5l5 5M7.5 2.5l-5 5"/></svg></button>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <b>Umbriel<br><em>Shaders</em></b>
+      <span>v0.1</span>
+    </div>
+    <nav id="nav" aria-label="Principal">
+      <button data-view="library" class="on">Biblioteca</button>
+      <button data-view="slots">Slots</button>
+      <button data-view="families">Familias</button>
+      <button data-view="settings">Ajustes</button>
+    </nav>
+    <div class="meta">
+      <span class="live" id="status"><i></i><span>Umbriel conectado</span></span>
+      <span id="entry-count">0 shaders</span>
+      <span class="lang" role="group" aria-label="Idioma">
+        <button data-lang="es" class="on">ES</button>
+        <button data-lang="en">EN</button>
+      </span>
+    </div>
+  </header>
+
+  <div class="tape" id="tape"></div>
+
+  <main id="view" class="view" tabindex="-1"></main>
+</div>
+
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<div id="modal" class="modal" hidden></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

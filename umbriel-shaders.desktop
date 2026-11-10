@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Umbriel Shaders
+GenericName=Shader library
+Comment=Browse, preview and apply Umbriel shaders to effect slots
+Exec=umbriel-shaders
+TryExec=umbriel-shaders
+Icon=umbriel-shaders
+Terminal=false
+Categories=Utility;Graphics;
+Keywords=umbriel;shader;glsl;animation;effect;
+StartupNotify=true
+StartupWMClass=umbriel-shaders

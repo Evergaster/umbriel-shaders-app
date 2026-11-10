@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-08T19:05:00Z",
+  "title": "Design System: Umbriel Shaders",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Paper Black",
+        "canonical": "#0A0A0A",
+        "tonalRamp": [
+          "#000000",
+          "#0A0A0A",
+          "#141413",
+          "#1F1F1D",
+          "#2B2B28",
+          "#3A3A36",
+          "#4C4C47",
+          "#62625B"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel Black",
+        "canonical": "#111110",
+        "tonalRamp": [
+          "#060606",
+          "#111110",
+          "#1A1A18",
+          "#252522",
+          "#31312D",
+          "#3F3F3A",
+          "#50504A",
+          "#66665F"
+        ]
+      },
+      "panel-raised": {
+        "role": "neutral",
+        "displayName": "Raised Black",
+        "canonical": "#0D0D0C",
+        "tonalRamp": [
+          "#030303",
+          "#0D0D0C",
+          "#171715",
+          "#222220",
+          "#2E2E2A",
+          "#3C3C37",
+          "#4D4D47",
+          "#63635C"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Bone Ink",
+        "canonical": "#F1EFE8",
+        "tonalRamp": [
+          "#6B6B64",
+          "#8A8A80",
+          "#A6A69B",
+          "#C2C2B8",
+          "#D8D8CF",
+          "#E6E4DC",
+          "#F1EFE8",
+          "#FAF9F4"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#7C7C74",
+        "tonalRamp": [
+          "#2E2E2B",
+          "#3E3E3A",
+          "#50504B",
+          "#63635D",
+          "#7C7C74",
+          "#95958B",
+          "#AEAEA4",
+          "#C8C8BE"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Faint Ink",
+        "canonical": "#8A8A80",
+        "tonalRamp": [
+          "#3A3A36",
+          "#4A4A45",
+          "#5C5C56",
+          "#707069",
+          "#8A8A80",
+          "#A2A298",
+          "#BABAB0",
+          "#D2D2C8"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#262622",
+        "tonalRamp": [
+          "#0E0E0D",
+          "#181816",
+          "#262622",
+          "#343430",
+          "#43433D",
+          "#54544D",
+          "#67675F",
+          "#7C7C73"
+        ]
+      },
+      "acid": {
+        "role": "primary",
+        "displayName": "Acid Ink",
+        "canonical": "#D8FF00",
+        "tonalRamp": [
+          "#1B2000",
+          "#3A4400",
+          "#5C6B00",
+          "#7F9300",
+          "#A4BB00",
+          "#C7E000",
+          "#D8FF00",
+          "#E8FF7A"
+        ]
+      },
+      "danger": {
+        "role": "tertiary",
+        "displayName": "Warning Red",
+        "canonical": "#FF5A45",
+        "tonalRamp": [
+          "#2B0A06",
+          "#4D120A",
+          "#731C10",
+          "#9A2817",
+          "#C23823",
+          "#E04A33",
+          "#FF5A45",
+          "#FF8F80"
+        ]
+      },
+      "acid-hover": {
+        "role": "primary",
+        "displayName": "Acid Hover",
+        "canonical": "#E4FF4D",
+        "tonalRamp": [
+          "#232A00",
+          "#465400",
+          "#6C7E00",
+          "#92A800",
+          "#B8D100",
+          "#D6F000",
+          "#E4FF4D",
+          "#F0FF9C"
+        ]
+      },
+      "on-acid": {
+        "role": "primary",
+        "displayName": "On Acid",
+        "canonical": "#151500",
+        "tonalRamp": [
+          "#000000",
+          "#0A0A00",
+          "#151500",
+          "#222200",
+          "#303000",
+          "#404000",
+          "#525200",
+          "#666600"
+        ]
+      },
+      "danger-deep": {
+        "role": "tertiary",
+        "displayName": "Danger Deep",
+        "canonical": "#3A201C",
+        "tonalRamp": [
+          "#150806",
+          "#24100C",
+          "#3A201C",
+          "#4E2C26",
+          "#643A32",
+          "#7A4940",
+          "#91594F",
+          "#A86B60"
+        ]
+      },
+      "on-danger": {
+        "role": "tertiary",
+        "displayName": "On Danger",
+        "canonical": "#160300",
+        "tonalRamp": [
+          "#000000",
+          "#0A0201",
+          "#160300",
+          "#230604",
+          "#320A07",
+          "#420F0A",
+          "#53140D",
+          "#661A12"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page titles only: Slots, Familias, Ajustes."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Selected shader name, dialog titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions, table cells, buttons."
+      },
+      "label": {
+        "displayName": "Label Mono",
+        "purpose": "Durations, paths, counts, column headers and chips; never below 11px."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Empty-library state."
+      },
+      "brand": {
+        "displayName": "Brand",
+        "purpose": "The two-line wordmark only."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "Slot card names, settings section headings, stat numbers."
+      },
+      "row": {
+        "displayName": "Row",
+        "purpose": "Shader names in the table and settings section titles."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Toast copy, settings descriptions, small buttons, path inputs."
+      }
+    },
+    "shadows": [
+      {
+        "name": "preview-window",
+        "value": "0 24px 70px rgba(0, 0, 0, 0.55)",
+        "purpose": "Only on the window that depicts a real compositor window inside the preview."
+      }
+    ],
+    "motion": [
+      {
+        "name": "toast-in",
+        "value": "180ms ease-out",
+        "purpose": "The single entrance animation: a toast rising 6px into place."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "1240px"
+      },
+      {
+        "name": "minimum",
+        "value": "1080px"
+      },
+      {
+        "name": "short",
+        "value": "840px height"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action the view exists for: apply a shader.",
+      "html": "<button class=\"ds-btn-primary\">APLICAR AL SLOT</button>",
+      "css": ".ds-btn-primary { background: #D8FF00; color: #151500; border: 1px solid #D8FF00; border-radius: 0; padding: 10px 16px; font-family: 'Archivo Narrow', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; } .ds-btn-primary:hover { background: #E4FF4D; } .ds-btn-primary:focus-visible { outline: 2px solid #D8FF00; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary and settings actions; keeps the acid for the primary.",
+      "html": "<button class=\"ds-btn-ghost\">PROBAR</button>",
+      "css": ".ds-btn-ghost { background: transparent; color: #F1EFE8; border: 1px solid #262622; border-radius: 0; padding: 10px 16px; font-family: 'Archivo Narrow', sans-serif; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; } .ds-btn-ghost:hover { border-color: #8A8A80; } .ds-btn-ghost:focus-visible { outline: 2px solid #D8FF00; outline-offset: 2px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-chip-active",
+      "description": "Type filter in the library toolbar; the active chip inverts to bone ink.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip ds-chip-on\">TODOS</button><button class=\"ds-chip\">ANIMACIÓN</button><button class=\"ds-chip\">BORDE</button></div>",
+      "css": ".ds-chips { display: flex; gap: 6px; } .ds-chip { background: #0D0D0C; color: #7C7C74; border: 1px solid #262622; border-radius: 0; padding: 5px 9px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; } .ds-chip:hover { color: #F1EFE8; border-color: #8A8A80; } .ds-chip-on { background: #F1EFE8; color: #0A0A0A; border-color: #F1EFE8; }"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Path and numeric inputs; square, mono, acid focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">RUTA DE LA CARPETA</span><input class=\"ds-input\" value=\"~/.local/share/umbriel-shaders/library\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 5px; } .ds-field-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #7C7C74; } .ds-input { height: 32px; padding: 0 10px; background: #0D0D0C; border: 1px solid #262622; border-radius: 0; color: #F1EFE8; font-family: 'JetBrains Mono', monospace; font-size: 11px; outline: none; } .ds-input:focus { border-color: #D8FF00; caret-color: #D8FF00; }"
+    },
+    {
+      "name": "Selected Table Row",
+      "kind": "custom",
+      "refersTo": "filter-chip-active",
+      "description": "Selection is a full acid field with black type, not a tint or a side stripe.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-row-idx\">01</span><span class=\"ds-row-name\">aurora-veil</span><span class=\"ds-row-type\">ANIMACIÓN</span><span class=\"ds-row-slot\">VISTA GENERAL</span><span class=\"ds-row-dur\">320 ms</span></div>",
+      "css": ".ds-row { display: grid; grid-template-columns: 54px 1fr 118px 1fr 86px; align-items: center; gap: 0; height: 52px; padding: 0 26px; background: #D8FF00; color: #151500; font-family: 'Archivo Narrow', sans-serif; } .ds-row-idx { font-family: 'JetBrains Mono', monospace; font-size: 11px; } .ds-row-idx::before { content: ''; display: inline-block; width: 5px; height: 5px; background: #151500; margin-right: 6px; vertical-align: 1px; } .ds-row-name { font-size: 19px; font-weight: 700; } .ds-row-type { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; } .ds-row-slot { font-size: 14px; text-transform: uppercase; } .ds-row-dur { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-align: right; }"
+    },
+    {
+      "name": "Slot Card",
+      "kind": "card",
+      "refersTo": "button-ghost",
+      "description": "One Umbriel destination: name, kind, current shader, timing and a change link.",
+      "html": "<div class=\"ds-slot\"><div class=\"ds-slot-top\"><h3>Vista general</h3><span>ANIMACIÓN</span></div><p>aurora-veil</p><div class=\"ds-slot-foot\"><span>320 MS · EASEOUTCUBIC</span><button>Cambiar</button></div></div>",
+      "css": ".ds-slot { background: #111110; padding: 16px 18px 14px; min-height: 118px; display: flex; flex-direction: column; font-family: 'Archivo Narrow', sans-serif; color: #F1EFE8; } .ds-slot-top { display: flex; justify-content: space-between; align-items: baseline; } .ds-slot h3 { font-size: 21px; font-weight: 400; margin: 0; } .ds-slot-top span { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: #7C7C74; } .ds-slot p { margin: 8px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #D8FF00; } .ds-slot-foot { margin-top: auto; padding-top: 10px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7C7C74; } .ds-slot-foot button { background: none; border: 0; border-bottom: 1px solid #262622; color: #F1EFE8; font: inherit; cursor: pointer; }"
+    },
+    {
+      "name": "Preview Window",
+      "kind": "custom",
+      "refersTo": "preview-window",
+      "description": "The one lush surface: a window frame with acid corner brackets and a live shader canvas.",
+      "html": "<div class=\"ds-window\"><div class=\"ds-window-bar\"><i></i><i></i><i></i><span>AURORA-VEIL</span></div><div class=\"ds-window-screen\"></div></div>",
+      "css": ".ds-window { width: 360px; aspect-ratio: 16 / 10; background: #161615; border: 1px solid #3A3A33; position: relative; box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55); } .ds-window::before, .ds-window::after { content: ''; position: absolute; width: 15px; height: 15px; border: 1px solid #D8FF00; } .ds-window::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; } .ds-window::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; } .ds-window-bar { height: 24px; border-bottom: 1px solid #2C2C27; display: flex; align-items: center; gap: 5px; padding: 0 9px; } .ds-window-bar i { width: 5px; height: 5px; border-radius: 50%; background: #3C3C35; } .ds-window-bar span { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #8A8A80; } .ds-window-screen { position: absolute; inset: 24px 0 0; background: radial-gradient(120% 90% at 70% 20%, #1E3A2A 0%, #101A14 60%, #0A0A0A 100%); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Running Order",
+    "overview": "Umbriel Shaders looks like the printed running order of a demoscene party, repurposed as an instrument. Every shader is an entry with a number, a type, a destination and a duration; the timeline along the bottom is the page's spine. The interface is dense but quiet: one flat black field, hairline rules, and a single acid ink that only ever marks what is selected, live or actionable.\n\nThe system refuses two category defaults: the card-grid shader gallery and the dark-glass dashboard. There are no floating panels, no rounded tiles, no second accent, and no glow outside the preview. The shader preview is the one place where the product's subject — light moving on a surface — is allowed to be lush; everything around it stays printed, factual and legible.",
+    "keyCharacteristics": [
+      "Flat black ground with 1px rules doing all the structural work.",
+      "One acid ink, reserved for selection, primary action and live state.",
+      "Condensed grotesk for names and controls; tabular mono for every number.",
+      "Zero radius and zero elevation; the only shadow belongs to the preview window.",
+      "A proportional running-order ruler that makes timing visible."
+    ],
+    "rules": [
+      {
+        "name": "The One Ink Rule",
+        "body": "Acid is a field, not a tint. If it is not selected, primary or live, it does not get the acid.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Structure comes from 1px rules and flat tonal steps. No card shadows, no glass, no gradient panels.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every number is mono, and the number that ends a row is right-aligned. Durations, counts, hashes and paths never use the display face.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Kicker Rule",
+        "body": "A page title stands alone. No eyebrow, no section number, no label above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "A surface earns a shadow only by depicting something physical. Panels, cards, menus and toasts stay flat.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Zero Radius Rule",
+        "body": "If a corner is rounded, it is not this system. Curves belong to the shader, not the chrome.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do invert a selected row, nav item or timeline segment completely (acid field, black type) instead of tinting it.",
+      "Do keep the ruler proportional to the real durations, and show the total in milliseconds.",
+      "Do keep every functional label at 11px or larger, even in the metadata tape and table headers.",
+      "Do put paths, durations, counts and curve names in the mono face.",
+      "Do let the shader preview be the only vivid surface in the window."
+    ],
+    "donts": [
+      "Don't add a second accent colour; Warning Red is for destruction only.",
+      "Don't round corners, add drop shadows to panels, or use glass and blur as decoration.",
+      "Don't put an eyebrow or kicker above a page title.",
+      "Don't use gradients, glows or coloured halos outside the shader canvas.",
+      "Don't use acid for body copy, borders or headings; it is a field colour."
+    ]
+  }
+}
