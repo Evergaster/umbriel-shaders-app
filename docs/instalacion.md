@@ -33,9 +33,12 @@ dependencias); las siguientes son incrementales.
 ### Desde el tarball de una release
 
 Si no quieres compilar, descarga `umbriel-shaders-<versión>-x86_64-linux.tar.gz` de la
-página de releases, verifica el `.sha256` y ejecuta:
+[página de releases](https://github.com/Evergaster/umbriel-shaders-app/releases),
+verifica el `.sha256` y ejecuta:
 
 ```sh
+curl -fLO https://github.com/Evergaster/umbriel-shaders-app/releases/download/v0.1.0/umbriel-shaders-0.1.0-x86_64-linux.tar.gz
+curl -fLO https://github.com/Evergaster/umbriel-shaders-app/releases/download/v0.1.0/umbriel-shaders-0.1.0-x86_64-linux.tar.gz.sha256
 sha256sum -c umbriel-shaders-0.1.0-x86_64-linux.tar.gz.sha256
 tar -xzf umbriel-shaders-0.1.0-x86_64-linux.tar.gz
 cd umbriel-shaders-0.1.0-x86_64-linux

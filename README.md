@@ -61,10 +61,13 @@ make build
 sudo ./install.sh --prefix /usr/local
 ```
 
-También puedes bajar el tarball de la última release y ejecutar su instalador, sin
-necesidad de compilar:
+También puedes bajar el tarball de la [última release](https://github.com/Evergaster/umbriel-shaders-app/releases/latest)
+y ejecutar su instalador, sin necesidad de compilar:
 
 ```sh
+curl -fLO https://github.com/Evergaster/umbriel-shaders-app/releases/download/v0.1.0/umbriel-shaders-0.1.0-x86_64-linux.tar.gz
+curl -fLO https://github.com/Evergaster/umbriel-shaders-app/releases/download/v0.1.0/umbriel-shaders-0.1.0-x86_64-linux.tar.gz.sha256
+sha256sum -c umbriel-shaders-0.1.0-x86_64-linux.tar.gz.sha256
 tar -xzf umbriel-shaders-0.1.0-x86_64-linux.tar.gz
 cd umbriel-shaders-0.1.0-x86_64-linux
 ./install.sh
